@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="https://fonts.googleapis.com/css?family=Metamorphous" rel="stylesheet">
+      <title>
+         UDACITY NEIGHBORHOOD MAP PROJECT
+      </title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <!--fetching this from boostrap.com-->
+      <link rel="stylesheet" href="css/style.css">
+   </head>
+   <!--body of the html-->
+   <body>
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-md-8">
+               <div id="create-map"></div>
+            </div>
+            <div class="col-md-4">
+               <div id="error">
+                  <h4>
+                     <span   data-bind="text: errormsg_Display"></span>
+                  </h4>
+               </div>
+               <input id="searchInputText" type="text" class="form-control" placeholder="TYPE LOCATIONS..." data-bind="value: searchTextResult, valueUpdate: 'afterkeydown', event: {keyup: UseFilter}">
+               <br>
+               <br>
+               <!-- list all the elements in mapList using knockoutJs-->
+               <ul class="list-group" data-bind="foreach: mapList">
+                  <!-- these list-group classes are present in bootstrapmin-->
+                  <a class="list-group-item" data-bind="css: {active: select}, text: title, visible: display_place, click: $parent.selectInfo"></a>       <!--list bound using knockout.js-->
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!------------script-->
+      <script src="js/work.js"></script>
+      <script src='js/jquery.min.js'></script> 
+      <script src="js/Knockout.js"></script>   
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDL2wQxSfyvV4baminAkX8LMHhB4auzt70&callback=initializeMap" onerror="googleMapError()" ></script><!-- this is used for linking google maps-->
+   </body>
+</html>
